@@ -96,9 +96,9 @@ in
     extraConfig = ''
       set -ag terminal-overrides ",xterm-256color:RGB"
       unbind %
-      bind u split-window -v
+      bind u split-window -v -c "#{pane_current_path}"
       unbind '"'
-      bind i split-window -h
+      bind i split-window -h -c "#{pane_current_path}"
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf
       bind -r m resize-pane -Z
