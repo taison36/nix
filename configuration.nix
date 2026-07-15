@@ -37,6 +37,17 @@
     casks = [
       "wezterm"
       "claude-code"
+      "betterdisplay"
+      "hiddenbar"
+      "jordanbaird-ice"
+      "mos"
+      "lunar"
+      "skim"
+      "lookaway"
+      "tomatobar"
+      "lidanglesensor"
+      "font-iosevka-ss04"
+      "font-meslo-lg-nerd-font"
     ];
   };
 }
