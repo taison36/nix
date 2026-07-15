@@ -16,9 +16,14 @@ in
     lazygit
     neovim
     nerd-fonts.hack
+    eza
+    zoxide
   ];
   fonts.fontconfig.enable = true;
-  home.sessionVariables.EDITOR = "nvim";
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    HOMEBREW_NO_AUTO_UPDATE = "1";
+  };
 
   programs.zsh = {
     enable = true;
@@ -26,16 +31,81 @@ in
     syntaxHighlighting.enable = true;  # commands turn green when valid
     initContent = ''
       bindkey '^f' autosuggest-accept
+
+      # completion using arrow keys (based on history)
+      bindkey '^[[A' history-search-backward
+      bindkey '^[[B' history-search-forward
+
+      eval "$(zoxide init zsh)"
+
+      # Ctrl+S to bring last backgrounded job to foreground
+      stty -ixon
+      _fg_widget() { fg }
+      zle -N _fg_widget
+      bindkey '^S' _fg_widget
     '';
     shellAliases = {
       add = "git add .";
       push = "git push";
       pull = "git pull";
       ccl = "claude";
+      ls = "eza --icons=always --color=always --no-user --long -la --no-permissions";
+      cd = "z";
     };
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      format = "$directory$git_branch$git_status$cmd_duration$line_break$character";
+      character = {
+        success_symbol = "[❯](purple)";
+        error_symbol = "[❯](red)";
+      };
+      cmd_duration.format = "[$duration]($style) ";
+    };
+  };
+
+  programs.tmux = {
+    enable = true;
+    prefix = "C-a";
+    mouse = true;
+    keyMode = "vi";
+    terminal = "tmux-256color";
+    escapeTime = 10;
+
+    plugins = with pkgs.tmuxPlugins; [
+      vim-tmux-navigator
+      resurrect
+      continuum
+#      tokyo-night-tmux
+    ];
+
+    extraConfig = ''
+      set -ag terminal-overrides ",xterm-256color:RGB"
+      unbind %
+      bind i split-window -v
+      unbind '"'
+      bind u split-window -h
+      unbind r
+      bind r source-file ~/.config/tmux/tmux.conf
+      bind -r m resize-pane -Z
+      bind M-c attach-session -c "#{pane_current_path}"
+
+      bind-key -T copy-mode-vi 'v' send -X begin-selection
+      bind-key -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "pbcopy"
+      bind-key -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe-and-cancel "pbcopy"
+
+      set -g @resurrect-capture-pane-contents 'on'
+      set -g @continuum-restore 'on'
+    '';
   };
 
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.
   home.file.".config/wezterm".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/wezterm";
+
+  home.file.".config/nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
 }
