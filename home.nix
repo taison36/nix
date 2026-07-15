@@ -25,6 +25,17 @@ in
     HOMEBREW_NO_AUTO_UPDATE = "1";
   };
 
+  programs.git = {
+    enable = true;
+    userName = "Tykhon Korol";
+    userEmail = "tihon.korol77@gmail.com";
+    extraConfig = {
+      core.autocrlf = "input";
+      init.defaultBranch = "master";
+    };
+    ignores = [ "**/.claude/settings.local.json" ];
+  };
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;      # ghost text from history
@@ -85,9 +96,9 @@ in
     extraConfig = ''
       set -ag terminal-overrides ",xterm-256color:RGB"
       unbind %
-      bind i split-window -v
+      bind u split-window -v
       unbind '"'
-      bind u split-window -h
+      bind i split-window -h
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf
       bind -r m resize-pane -Z
@@ -108,4 +119,8 @@ in
 
   home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
+
+  # Karabiner-Elements rewrites this file via its GUI, so point straight at the repo.
+  home.file.".config/karabiner/karabiner.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/karabiner/karabiner.json";
 }
