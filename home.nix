@@ -27,13 +27,12 @@ in
 
   programs.git = {
     enable = true;
-    userName = "Tykhon Korol";
+    userName = "taison36";
     userEmail = "tihon.korol77@gmail.com";
     extraConfig = {
       core.autocrlf = "input";
       init.defaultBranch = "master";
     };
-    ignores = [ "**/.claude/settings.local.json" ];
   };
 
   programs.zsh = {
@@ -123,4 +122,10 @@ in
   # Karabiner-Elements rewrites this file via its GUI, so point straight at the repo.
   home.file.".config/karabiner/karabiner.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/karabiner/karabiner.json";
+
+  home.file.".claude/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
+
+  home.file.".claude/CLAUDE.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
 }
