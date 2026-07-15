@@ -17,12 +17,12 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) 
 
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
--- save by pressing Escape
-keymap.set('n', '<Esc>', ':w<CR>', { desc = 'Save' })
+-- save by pressing Ctrl+C
+keymap.set('n', '<C-c>', ':w<CR>', { desc = 'Save' })
 -- pasting over a selection no longer clobbers your clipboard
 vim.cmd([[ xnoremap <expr> p 'pgv"'.v:register.'y' ]])
 
-keymap.set("i", "<C-c>", "<Esc>")
+keymap.set("i", "<C-c>", "<Esc>:w<CR>")
 keymap.set("n", "<leader>cf", function()
   require("conform").format({ async = true, lsp_fallback = true })
 

@@ -9,15 +9,16 @@ in
   home.homeDirectory = "/Users/${user}";
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
-    ripgrep   # fast search
-    fd        # fast find
-    fzf       # fuzzy finder
-    jq        # json on the command line
+    ripgrep   
+    fd        
+    fzf       
+    jq        
     lazygit
     neovim
     nerd-fonts.hack
     eza
     zoxide
+    fastfetch
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables = {

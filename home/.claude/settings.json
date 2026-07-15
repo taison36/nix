@@ -1,7 +1,8 @@
 {
-  "tui": "fullscreen",
+  "model": "claude-fable-5[1m]",
   "statusLine": {
     "type": "command",
     "command": "sh ~/.claude/statusline-command.sh"
-  }
+  },
+  "tui": "fullscreen"
 }
