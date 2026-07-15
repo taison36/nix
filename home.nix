@@ -19,6 +19,7 @@ in
     eza
     zoxide
     fastfetch
+    go
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
