@@ -5,7 +5,7 @@ return {
   config = function()
 
   require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"cpp", "rust", "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+  ensure_installed = {"cpp", "rust", "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "go", "gomod", "gosum", "gowork" },
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = false,

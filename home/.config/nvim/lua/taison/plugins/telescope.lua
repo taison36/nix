@@ -17,11 +17,37 @@ return {
         layout_config = {
           preview_width = 0.6 -- how much space the preview takes
         },
+        -- include hidden (dot) files in live_grep / grep_string, but skip .git
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+          "--glob",
+          "!**/.git/*",
+        },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+          },
+        },
+      },
+      pickers = {
+        find_files = {
+          -- show hidden (dot) files but ignore the .git directory
+          hidden = true,
+          find_command = {
+            "rg",
+            "--files",
+            "--hidden",
+            "--glob",
+            "!**/.git/*",
           },
         },
       },

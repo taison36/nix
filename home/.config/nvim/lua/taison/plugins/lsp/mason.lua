@@ -5,6 +5,7 @@ return {
           ensure_installed = {
             "clangd",
             "jdtls",
+            "gopls",
       },
     },
     dependencies = {

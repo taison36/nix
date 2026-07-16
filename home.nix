@@ -42,6 +42,9 @@ in
     autosuggestion.enable = true;      # ghost text from history
     syntaxHighlighting.enable = true;  # commands turn green when valid
     initContent = ''
+      # Load secrets that are not tracked in the dotfiles repo (gitignored)
+      [ -f "$HOME/.config/zsh/secrets.zsh" ] && source "$HOME/.config/zsh/secrets.zsh"
+
       bindkey '^f' autosuggest-accept
 
       # completion using arrow keys (based on history)
@@ -127,6 +130,10 @@ in
 
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
+
+  # Gitignored secrets file - edit-in-place, never committed.
+  home.file.".config/zsh/secrets.zsh".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/zsh/secrets.zsh";
 
   home.file.".claude/CLAUDE.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";

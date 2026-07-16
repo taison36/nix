@@ -2,3 +2,6 @@
 .DS_Store
 result
 result-*
+
+# secrets - never commit real keys (template .example is tracked)
+home/.config/zsh/secrets.zsh
