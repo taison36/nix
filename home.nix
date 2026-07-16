@@ -106,6 +106,8 @@ in
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf
       bind -r m resize-pane -Z
+      bind -r h resize-pane -L 5
+      bind -r l resize-pane -R 5
       bind M-c attach-session -c "#{pane_current_path}"
 
       bind-key -T copy-mode-vi 'v' send -X begin-selection
