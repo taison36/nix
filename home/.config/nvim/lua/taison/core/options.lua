@@ -6,8 +6,9 @@ local opt = vim.opt -- for conciseness
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
-opt.tabstop = 4 -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 4 -- 2 spaces for indent width
+opt.tabstop = 4 -- spaces per tab
+opt.shiftwidth = 4 -- spaces per indent level
+opt.softtabstop = 4
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 

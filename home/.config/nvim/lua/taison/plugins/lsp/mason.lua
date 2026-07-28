@@ -6,6 +6,8 @@ return {
             "clangd",
             "jdtls",
             "gopls",
+            "vtsls",
+            "zls",
       },
     },
     dependencies = {

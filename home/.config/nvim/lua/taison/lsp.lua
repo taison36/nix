@@ -16,6 +16,14 @@ vim.lsp.enable("gopls", {
   },
 })
 
+vim.lsp.enable("vtsls")
+
+vim.lsp.enable("zls", {
+  capabilities = {
+    offsetEncoding = { "utf-16" },
+  },
+})
+
 -- optional: disable inline diagnostics (you already did this)
 vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 

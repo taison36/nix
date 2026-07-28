@@ -5,11 +5,31 @@ return {
     config = function()
         -- Optionally configure and load the colorscheme
         -- directly inside the plugin declaration.
-        vim.g.gruvbox_material_background = 'soft'
+        vim.g.gruvbox_material_background = 'hard'
         vim.g.gruvbox_material_foreground = 'mix'
         vim.cmd.colorscheme('gruvbox-material')
     end
 }
+
+
+--return {
+--	"rose-pine/neovim",
+--	name = "rose-pine",
+--	config = function()
+--		vim.cmd("colorscheme rose-pine")
+--	end
+--}
+
+--return {
+--    "bluz71/vim-moonfly-colors",
+--    name = "moonfly",
+--    lazy = false,
+--    priority = 1000,
+--    config = function()
+--        vim.g.moonflyTransparent = false
+--        vim.cmd.colorscheme('moonfly')
+--    end
+--}
 --
 --
 --return {

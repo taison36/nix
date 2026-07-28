@@ -20,6 +20,7 @@ in
     zoxide
     fastfetch
     go
+    zig
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
@@ -64,7 +65,7 @@ in
       push = "git push";
       pull = "git pull";
       ccl = "claude";
-      ls = "eza --icons=always --color=always --no-user --long -la --no-permissions";
+      ls = "eza --icons=always --color=always  --long -la";
       cd = "z";
     };
   };
@@ -125,6 +126,9 @@ in
 
   home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
+
+  home.file.".editorconfig".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.editorconfig";
 
   # Karabiner-Elements rewrites this file via its GUI, so point straight at the repo.
   home.file.".config/karabiner/karabiner.json".source =

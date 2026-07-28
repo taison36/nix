@@ -37,6 +37,7 @@
     casks = [
       "wezterm"
       "claude-code"
+      "codex"
       "betterdisplay"
       "hiddenbar"
       "jordanbaird-ice"
