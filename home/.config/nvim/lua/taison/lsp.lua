@@ -16,6 +16,8 @@ vim.lsp.enable("gopls", {
   },
 })
 
+vim.lsp.enable("pyright")
+
 vim.lsp.enable("vtsls")
 
 vim.lsp.enable("zls", {

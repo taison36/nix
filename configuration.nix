@@ -31,6 +31,9 @@
   };
   homebrew = {
     enable = true;
+    brews = [
+      "vulkan-validationlayers"
+    ];
     #onActivation.cleanup = "zap";  # remove anything not listed here
     onActivation.autoUpdate = true;
     onActivation.extraFlags = [ "--force" ];
@@ -38,7 +41,6 @@
       "wezterm"
       "claude-code"
       "codex"
-      "betterdisplay"
       "hiddenbar"
       "jordanbaird-ice"
       "mos"
@@ -52,4 +54,3 @@
     ];
   };
 }
-

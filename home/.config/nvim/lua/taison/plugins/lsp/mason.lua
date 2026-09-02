@@ -6,6 +6,7 @@ return {
             "clangd",
             "jdtls",
             "gopls",
+            "pyright",
             "vtsls",
             "zls",
       },

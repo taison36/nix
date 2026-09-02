@@ -21,6 +21,7 @@ in
     fastfetch
     go
     zig
+    python3
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
@@ -46,6 +47,9 @@ in
       # Load secrets that are not tracked in the dotfiles repo (gitignored)
       [ -f "$HOME/.config/zsh/secrets.zsh" ] && source "$HOME/.config/zsh/secrets.zsh"
 
+      # Vulkan validation layers installed via Homebrew
+      export VK_LAYER_PATH="/opt/homebrew/opt/vulkan-validationlayers/share/vulkan/explicit_layer.d"
+
       bindkey '^f' autosuggest-accept
 
       # completion using arrow keys (based on history)
@@ -61,7 +65,8 @@ in
       bindkey '^S' _fg_widget
     '';
     shellAliases = {
-      add = "git add .";
+      gs = "git status";
+      ga = "git add .";
       push = "git push";
       pull = "git pull";
       ccl = "claude";
@@ -109,6 +114,8 @@ in
       bind -r m resize-pane -Z
       bind -r h resize-pane -L 5
       bind -r l resize-pane -R 5
+      bind -r j resize-pane -D 5
+      bind -r k resize-pane -U 5
       bind M-c attach-session -c "#{pane_current_path}"
 
       bind-key -T copy-mode-vi 'v' send -X begin-selection
@@ -131,8 +138,11 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.editorconfig";
 
   # Karabiner-Elements rewrites this file via its GUI, so point straight at the repo.
-  home.file.".config/karabiner/karabiner.json".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/karabiner/karabiner.json";
+  home.file.".config/karabiner/karabiner.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink
+      "${dotfiles}/home/.config/karabiner/karabiner.json";
+    force = true;
+  };
 
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
