@@ -22,6 +22,7 @@ in
     go
     zig
     python3
+    texlive.combined.scheme-medium
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
