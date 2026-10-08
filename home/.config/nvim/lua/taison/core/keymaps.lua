@@ -4,6 +4,12 @@ local keymap = vim.keymap
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader>f-l", function()
+  vim.cmd("checktime")
+  vim.notify("Opened files checked and refreshed from disk", vim.log.levels.INFO, {
+    title = "File reload",
+  })
+end, { desc = "Reload files changed on disk" })
 
 keymap.set("n", "<leader>si", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>su", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally

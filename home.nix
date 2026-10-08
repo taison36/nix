@@ -23,6 +23,7 @@ in
     zig
     python3
     texlive.combined.scheme-medium
+    terraform
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
@@ -71,6 +72,7 @@ in
       push = "git push";
       pull = "git pull";
       ccl = "claude";
+      xx = "codex";
       ls = "eza --icons=always --color=always  --long -la";
       cd = "z";
     };
@@ -154,4 +156,8 @@ in
 
   home.file.".claude/CLAUDE.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+
+  # Shared skills for agent tools that support the standard ~/.agents/skills path.
+  home.file.".agents/skills".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.agents/skills";
 }
