@@ -49,6 +49,12 @@ in
       # Load secrets that are not tracked in the dotfiles repo (gitignored)
       [ -f "$HOME/.config/zsh/secrets.zsh" ] && source "$HOME/.config/zsh/secrets.zsh"
 
+      # Load the Herdr automatic rename plugin's shell hook when installed
+      for _f in "$HOME"/.config/herdr/plugins/github-installations/herdr-automatic-rename-*/[0-9]*-*/checkout/shell/hook.zsh(N); do
+        source "$_f"
+        break
+      done
+
       # Vulkan validation layers installed via Homebrew
       export VK_LAYER_PATH="/opt/homebrew/opt/vulkan-validationlayers/share/vulkan/explicit_layer.d"
 
@@ -133,6 +139,9 @@ in
   # Edit-in-place: the real file stays in my repo, ~/.config just points at it.
   home.file.".config/wezterm".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/wezterm";
+
+  home.file.".config/herdr/config.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr/config.toml";
 
   home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";

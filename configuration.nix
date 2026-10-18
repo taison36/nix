@@ -32,6 +32,7 @@
   homebrew = {
     enable = true;
     brews = [
+      "herdr"
       "vulkan-validationlayers"
     ];
     #onActivation.cleanup = "zap";  # remove anything not listed here
