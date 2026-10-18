@@ -2,6 +2,8 @@ onboarding = false
 
 [keys]
 prefix = "ctrl+a"
+split_vertical = ["prefix+v", "prefix+u"]
+split_horizontal = ["prefix+minus", "prefix+i"]
 
 [theme]
 name = "gruvbox"
