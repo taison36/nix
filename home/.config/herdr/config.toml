@@ -2,8 +2,8 @@ onboarding = false
 
 [keys]
 prefix = "ctrl+a"
-split_vertical = ["prefix+v", "prefix+u"]
-split_horizontal = ["prefix+minus", "prefix+i"]
+split_vertical = ["prefix+v", "prefix+i"]
+split_horizontal = ["prefix+minus", "prefix+u"]
 zoom = "prefix+m"
 
 [theme]
@@ -13,6 +13,7 @@ auto_switch = false
 [ui]
 prompt_new_tab_name = false
 
+status_indicators = "symbols"
 [ui.sound]
 enabled = false
 
@@ -39,3 +40,6 @@ key = "ctrl+l"
 type = "plugin_action"
 command = "vim-herdr-navigation.right"
 description = "navigate right between Neovim and Herdr panes"
+
+[ui.toast]
+delivery = "herdr"
