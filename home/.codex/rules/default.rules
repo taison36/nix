@@ -1,0 +1,21 @@
+# Preserve the existing approved curl prefix.
+prefix_rule(pattern=["curl", "-L", "--fail"], decision="allow")
+
+# Allow read-only Herdr agent inspection without a prompt.
+prefix_rule(
+    pattern = ["herdr", "agent", "list"],
+    decision = "allow",
+    justification = "List agents managed by Herdr",
+)
+
+prefix_rule(
+    pattern = ["herdr", "agent", "get"],
+    decision = "allow",
+    justification = "Inspect an agent managed by Herdr",
+)
+
+prefix_rule(
+    pattern = ["herdr", "agent", "read"],
+    decision = "allow",
+    justification = "Read output from an agent managed by Herdr",
+)

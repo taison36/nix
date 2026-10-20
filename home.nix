@@ -28,6 +28,8 @@ in
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
     EDITOR = "nvim";
+    HERDR_ENV = "1";
+    HOMEBREW_AUTO_UPDATE_SECS = "86400";
   };
 
   programs.git = {
@@ -42,6 +44,9 @@ in
 
   programs.zsh = {
     enable = true;
+    envExtra = ''
+      unset HOMEBREW_NO_AUTO_UPDATE
+    '';
     autosuggestion.enable = true;      # ghost text from history
     syntaxHighlighting.enable = true;  # commands turn green when valid
     initContent = ''
@@ -141,6 +146,12 @@ in
 
   home.file.".config/herdr/config.toml".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr/config.toml";
+
+  home.file.".codex/rules/default.rules" = {
+    source = config.lib.file.mkOutOfStoreSymlink
+      "${dotfiles}/home/.codex/rules/default.rules";
+    force = true;
+  };
 
   home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";

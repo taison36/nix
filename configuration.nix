@@ -33,6 +33,7 @@
     enable = true;
     brews = [
       "herdr"
+      "bruno-cli"
       "vulkan-validationlayers"
     ];
     #onActivation.cleanup = "zap";  # remove anything not listed here
