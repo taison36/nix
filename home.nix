@@ -28,7 +28,6 @@ in
   fonts.fontconfig.enable = true;
   home.sessionVariables = {
     EDITOR = "nvim";
-    HERDR_ENV = "1";
     HOMEBREW_AUTO_UPDATE_SECS = "86400";
   };
 

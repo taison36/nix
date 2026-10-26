@@ -1,6 +1,13 @@
 # Preserve the existing approved curl prefix.
 prefix_rule(pattern=["curl", "-L", "--fail"], decision="allow")
 
+# Allow Git commands without prompting.
+prefix_rule(
+    pattern = ["git"],
+    decision = "allow",
+    justification = "Run Git commands",
+)
+
 # Allow read-only Herdr agent inspection without a prompt.
 prefix_rule(
     pattern = ["herdr", "agent", "list"],
